@@ -15,10 +15,13 @@ from jose import jwt, JWTError
 
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from app.config import get_settings
+
+settings = get_settings()
 
 
-SECRET_KEY = "KlgH6AzYDeZeGwD288to79I3vTHT8wp7"
-ALGORITHM = "HS256"
+SECRET_KEY = settings.SECRET_KEY
+ALGORITHM = settings.ALGORITHM
 
 templates = Jinja2Templates(directory="app/templates")
 

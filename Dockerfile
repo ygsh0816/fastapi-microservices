@@ -1,5 +1,6 @@
 FROM python:3.9
 
+ENV APP_ENV dev
 WORKDIR /app
 COPY /app /app
 
