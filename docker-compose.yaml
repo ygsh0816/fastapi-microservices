@@ -1,0 +1,33 @@
+version: "3"
+services:
+  user-backend:
+    container_name: user-ms
+    build : ./
+    volumes:
+      - ./:/app:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres-db
+
+
+  postgres-db:
+    container_name: postgres_db_container
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: fastapiusers
+
+  pg-admin:
+    container_name: pg_admin_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
