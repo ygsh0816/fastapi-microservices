@@ -5,7 +5,7 @@ from app.config import get_settings
 
 settings = get_settings()
 
-DATABASE_URL = f"postgresql://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@postgres_db_container:5432/{settings.DB_NAME}"
+DATABASE_URL = f"postgresql://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@{settings.DB_HOST}/{settings.DB_NAME}"
 
 engine = create_engine(
     DATABASE_URL

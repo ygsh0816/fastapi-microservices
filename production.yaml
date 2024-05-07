@@ -1,0 +1,10 @@
+version: "3"
+services:
+  user-backend:
+    container_name: user-ms
+    build : ./
+    env_file: app/.env
+    volumes:
+      - ./:/app:ro
+    ports:
+      - "8000:8000"
